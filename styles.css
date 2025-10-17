@@ -1,4 +1,3 @@
-
 body {
     background-image:url(flags/bg.jpg);
     background-repeat: no-repeat;
@@ -74,7 +73,7 @@ h1 {
 }
 .audio-icon {
     border-radius: 50%;
-    position: fixed;
+    position: absolute;
    
 }
 .audio-icon :hover{
@@ -87,65 +86,166 @@ h1 {
     height: 100px;
     opacity: 0.8;
 }
-@media screen and (max-width: 768px) {
-    
-    /* 1. Container Principal */
-    .container {
-        width: 100%; /* Ocupa a largura total */
-        padding: 20px; /* Reduz o padding para ganhar espaço */
-        /* O background-color e box-shadow (se existentes) se mantêm */
-    }
 
-    /* 2. Título */
-    h1 {
-        font-size: 24px; /* Reduz o tamanho da fonte */
-        margin-bottom: 20px;
-    }
-    
-    /* 3. Layout dos Botões (A MUDANÇA MAIS IMPORTANTE) */
-    .country-buttons {
-        /* Mudar de 6 colunas para 3 (ou 2, dependendo do quão apertado ficar) */
-        grid-template-columns: repeat(3, 1fr); 
-        width: 90%; /* Usa 90% da largura do container */
-        gap: 8px; /* Reduz a distância entre os botões */
-        margin-bottom: 30px;
-    }
-    
-    /* 4. Estilo dos Botões/Bandeiras */
-    .country-button {
-        /* Garante que o texto ou a imagem se ajuste ao novo tamanho da coluna */
-        font-size: 12px;
-        padding: 5px; 
-    }
+/* ------- Media queries para responsividade ------- */
 
-    /* 5. Caixa de Mensagem */
+/* Tablets grandes / landscape (<= 1024px) */
+@media (max-width: 1024px) {
+    .message-container,
     .message-box {
-        width: 90%; /* Ocupa a maior parte da largura da tela */
-        padding: 20px; /* Reduz o padding interno */
-        margin-top: 20px;
-    }
-    
-    #message-text {
-        font-size: 16px; /* Reduz o tamanho da fonte da mensagem */
+        width: 90%;
+        padding: 32px;
     }
 
-    #language-info {
-        font-size: 12px; /* Reduz o tamanho da fonte da info de idioma */
+    .country-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 100%;
+        gap: 12px;
     }
 
-    /* 6. Ícone Flutuante (Hello Kitty) */
-    .kitty-icon {
-        left: 10px; /* Aproxima da borda esquerda */
-        bottom: 10px; /* Aproxima da borda inferior */
-        width: 50px; /* Reduz o tamanho do ícone */
+    .country-button {
+        font-size: 13px;
+        height: 90px;
+        padding: 6px;
+    }
+
+    .country-button img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* evitar mudança brusca de tamanho no hover em telas menores */
+    .country-button:hover {
+        transform: scale(1.02);
+        height: 90px;
+        width: auto;
     }
 }
 
-/* Estilos aplicados quando a largura da tela for MUITO pequena (celulares menores) */
-@media screen and (max-width: 480px) {
-    
-    .country-buttons {
-        /* Para telas muito pequenas, use apenas 2 colunas */
-        grid-template-columns: repeat(2, 1fr); 
+/* Tablets / phablets / portrait (<= 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 0;
+        background-image: url(flags/bg2.jpg);
+        background-size: auto;
     }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .message-container,
+    .message-box {
+        width: 95%;
+        padding: 24px;
+    }
+
+    .country-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .country-button {
+        height: 80px;
+        border-radius: 6px;
+    }
+
+    .country-button img {
+        height: 100%;
+    }
+
+    .audio-icon img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Celulares médios (<= 480px) */
+@media (max-width: 480px) {
+    body{
+        background-image: url(flags/bg2.jpg);
+        background-size: auto;
+    }
+    h1 {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .message-container,
+    .message-box {
+        width: 96%;
+        padding: 18px;
+    }
+
+    .country-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .country-button {
+        height: 70px;
+        font-size: 13px;
+    }
+
+    .country-button img {
+        height: 100%;
+    }
+
+    /* evitar crescimento excessivo no hover em telas pequenas */
+    .country-button:hover {
+        transform: none;
+        background-color: rgba(109,12,12,0.9);
+    }
+
+    #message-text {
+        font-size: 16px;
+    }
+
+    #language-info {
+        font-size: 13px;
+    }
+
+    .audio-icon img {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* Celulares muito pequenos (<= 360px) */
+@media (max-width: 360px) {
+    .country-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .country-button {
+        height: 64px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    #message-text {
+        font-size: 15px;
+    }
+}
+
+/* pequenas correções úteis (objet-fit e overflow para imagens) */
+.country-button {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.18s ease;
+}
+
+.country-button img:hover {
+    transform: scale(1.03);
 }

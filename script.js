@@ -4,7 +4,7 @@ const messages = {
         lang: "Português"
     },
     cuba: {
-        text: "Te quierp, Ana",
+        text: "Te quiero, Ana",
         lang: "Espanhol"
     },
     cazaq: {
