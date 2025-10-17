@@ -87,3 +87,65 @@ h1 {
     height: 100px;
     opacity: 0.8;
 }
+@media screen and (max-width: 768px) {
+    
+    /* 1. Container Principal */
+    .container {
+        width: 100%; /* Ocupa a largura total */
+        padding: 20px; /* Reduz o padding para ganhar espaço */
+        /* O background-color e box-shadow (se existentes) se mantêm */
+    }
+
+    /* 2. Título */
+    h1 {
+        font-size: 24px; /* Reduz o tamanho da fonte */
+        margin-bottom: 20px;
+    }
+    
+    /* 3. Layout dos Botões (A MUDANÇA MAIS IMPORTANTE) */
+    .country-buttons {
+        /* Mudar de 6 colunas para 3 (ou 2, dependendo do quão apertado ficar) */
+        grid-template-columns: repeat(3, 1fr); 
+        width: 90%; /* Usa 90% da largura do container */
+        gap: 8px; /* Reduz a distância entre os botões */
+        margin-bottom: 30px;
+    }
+    
+    /* 4. Estilo dos Botões/Bandeiras */
+    .country-button {
+        /* Garante que o texto ou a imagem se ajuste ao novo tamanho da coluna */
+        font-size: 12px;
+        padding: 5px; 
+    }
+
+    /* 5. Caixa de Mensagem */
+    .message-box {
+        width: 90%; /* Ocupa a maior parte da largura da tela */
+        padding: 20px; /* Reduz o padding interno */
+        margin-top: 20px;
+    }
+    
+    #message-text {
+        font-size: 16px; /* Reduz o tamanho da fonte da mensagem */
+    }
+
+    #language-info {
+        font-size: 12px; /* Reduz o tamanho da fonte da info de idioma */
+    }
+
+    /* 6. Ícone Flutuante (Hello Kitty) */
+    .kitty-icon {
+        left: 10px; /* Aproxima da borda esquerda */
+        bottom: 10px; /* Aproxima da borda inferior */
+        width: 50px; /* Reduz o tamanho do ícone */
+    }
+}
+
+/* Estilos aplicados quando a largura da tela for MUITO pequena (celulares menores) */
+@media screen and (max-width: 480px) {
+    
+    .country-buttons {
+        /* Para telas muito pequenas, use apenas 2 colunas */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
