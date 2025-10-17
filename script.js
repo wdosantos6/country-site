@@ -44,7 +44,7 @@ const messages = {
         lang: "Esloveno"
     },
     arabisaudita: {
-        text: "أنا أحبك، آنا (Ana uhibbuka, Ana)",
+        text: "أنا أحبك، آنا (Ana uhibbuki, Ana)",
         lang: "Árabe"
     }
 };
